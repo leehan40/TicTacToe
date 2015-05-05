@@ -1,0 +1,18 @@
+Tic Tac Toe
+by Kevin Leehan
+
+Start page:
+You have two options here:
+You can either play alone versus the computer "Single Player"
+or against a friend "2 Players"
+
+If you tap the screen below the two buttons with every tap a word appears: Tic, Tac, or Toe.
+
+With either game option you select, the user will then be transferred to the game page
+The first player to play is X and the 2nd player is O.
+When playing against the computer the Human player always goes first.
+
+There is one button visible and located at the bottom left corner of the screen, which allows the user to return to the main screen.
+When the game finishes the New Game button will appear at the lower right corner of the screen, allowing the user to start another game.
+
+At anytime the user can press the menu button on the device and select the "Close app" function to exit the app.
