@@ -24,14 +24,14 @@ public class Game extends ActionBarActivity{
     private int winner=0;
     private int board[][] = new int[3][3]; // for now we will represent the board as an array of ints
 
-    //MainActivity main = new MainActivity();
     boolean singlePlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_game);
-        //Passes in boolean value from MainActivity button
+
+        //Retrieves boolean value from MainActivity button
         singlePlayer = getIntent().getBooleanExtra("singlePlayer", true);
 
 
@@ -161,11 +161,10 @@ public class Game extends ActionBarActivity{
             setUnclickable();
             doEndGame();
         }
-        if(PlayerTurn) {
+        if(PlayerTurn && !WinStatus) {
             PlayerTurn = false;
-            if (singlePlayer) {
+            if (singlePlayer)
                 aiTurn();
-            }
         }else
             PlayerTurn=true;
 
@@ -283,32 +282,27 @@ public class Game extends ActionBarActivity{
             {
                 winner = board[0][0];
                 WinStatus=true;
-
             }
         if( (board[2][0]==board[2][1] && board[2][0]==board[2][2] && board[2][0]!=0) || //row3 win
             (board[0][2]==board[1][2] && board[0][2]==board[2][2] && board[0][2]!=0)) //col3 win
             {
                 winner = board[2][2];
                 WinStatus=true;
-
             }
-
         if( (board[1][0]==board[1][1] && board[1][0]==board[1][2] && board[1][0]!=0) || //row2 win
             (board[0][1]==board[1][1] && board[0][1]==board[2][1] && board[0][1]!=0) || //col2 win
             (board[0][2]==board[1][1] && board[0][2]==board[2][0] && board[0][2]!=0))  //Right top to bottom left diagonal win
             {
                 winner = board[1][1];
                 WinStatus=true;
-
             }
-
     }
 
     public void checkDraw(){
         //Checks to see if all boxes have been marked to signal a draw
         if( (board[0][0]!=0 && board[0][1]!=0 && board[0][2]!=0) &&
-                (board[1][0]!=0 && board[1][1]!=0 && board[1][2]!=0) &&
-                (board[2][0]!=0 && board[2][1]!=0 && board[2][2]!=0))
+            (board[1][0]!=0 && board[1][1]!=0 && board[1][2]!=0) &&
+            (board[2][0]!=0 && board[2][1]!=0 && board[2][2]!=0))
         {
             winner = 3;
             WinStatus=true;
